@@ -54,7 +54,7 @@ export default {
           Two : 'Gayathri'
         },
         inputMetrix:[
-            ["1","2","3"],
+            [1,2,3],
             [4,5,6],
             [7,8,9]
           ],
@@ -67,6 +67,20 @@ export default {
     methods:{
       winCheck(){
         if(this.inputMetrix[0][0] == this.inputMetrix[0][1] && this.inputMetrix[0][0] == this.inputMetrix[0][2]){
+          alert("win")
+        }else if(this.inputMetrix[1][0] == this.inputMetrix[1][1] && this.inputMetrix[1][0] == this.inputMetrix[1][2]){
+          alert("win")
+        }else if(this.inputMetrix[2][0] == this.inputMetrix[2][1] && this.inputMetrix[2][0] == this.inputMetrix[2][2]){
+          alert("win")
+        }else if(this.inputMetrix[0][0] == this.inputMetrix[1][0] && this.inputMetrix[1][0] == this.inputMetrix[2][0]){
+          alert("win")
+        }else if(this.inputMetrix[0][1] == this.inputMetrix[1][1] && this.inputMetrix[1][1] == this.inputMetrix[2][1]){
+          alert("win")
+        }else if(this.inputMetrix[0][2] == this.inputMetrix[1][2] && this.inputMetrix[1][2] == this.inputMetrix[2][2]){
+          alert("win")
+        }else if(this.inputMetrix[0][0] == this.inputMetrix[1][1] && this.inputMetrix[1][1] == this.inputMetrix[2][2]){
+          alert("win")
+        }else if(this.inputMetrix[0][2] == this.inputMetrix[1][1] && this.inputMetrix[1][1] == this.inputMetrix[0][2]){
           alert("win")
         }
       },
