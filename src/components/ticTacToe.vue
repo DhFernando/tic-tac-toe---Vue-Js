@@ -33,6 +33,7 @@
           </div>
         </div>
         <div class="col-3" v-show="gameStarted == false">
+          {{errorMessage}}
             <div class="form-group">
                 <input type="text" v-model="player.x_player" placeholder="x-player name" class="form-control" :disabled="gameStarted" >
               </div>
@@ -60,6 +61,7 @@ export default {
       return{
         count : 0,
         gameStarted:false,
+        errorMessage : null,
         gameReset:true,
         chance : null,
         player:{
@@ -117,15 +119,23 @@ export default {
       },
 
       startGame(){
-        this.gameStarted = true
-        this.chance = this.player.x_player
+        if(this.player.x_player.length > 0 && this.player.o_player.length > 0 ){
+          this.errorMessage = null
+          this.gameStarted = true
+          this.chance = this.player.x_player
+        }else{
+          this.errorMessage = "please enter player names first"
+        }
+        
 
       },
 
       resetGame(){
+
         this.gameReset =false
         this.gameStarted = false
 
+        // reset all the thing 
         location.reload(true)
 
       },
