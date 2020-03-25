@@ -82,21 +82,37 @@ export default {
       winCheck(){
         if(this.inputMetrix[0][0] == this.inputMetrix[0][1] && this.inputMetrix[0][0] == this.inputMetrix[0][2]){
 
-          alert("win")
+
+          document.getElementById("resetGame-Button").innerHTML = "Play Again : )"
+          alert()
         }else if(this.inputMetrix[1][0] == this.inputMetrix[1][1] && this.inputMetrix[1][0] == this.inputMetrix[1][2]){
-          alert("win")
+
+          document.getElementById("resetGame-Button").innerHTML = "Play Again : )"
+          alert()
         }else if(this.inputMetrix[2][0] == this.inputMetrix[2][1] && this.inputMetrix[2][0] == this.inputMetrix[2][2]){
-          alert("win")
+
+          document.getElementById("resetGame-Button").innerHTML = "Play Again : )"
+          alert()
         }else if(this.inputMetrix[0][0] == this.inputMetrix[1][0] && this.inputMetrix[1][0] == this.inputMetrix[2][0]){
-          alert("win")
+
+          document.getElementById("resetGame-Button").innerHTML = "Play Again : )"
+          alert()
         }else if(this.inputMetrix[0][1] == this.inputMetrix[1][1] && this.inputMetrix[1][1] == this.inputMetrix[2][1]){
-          alert("win")
+
+          document.getElementById("resetGame-Button").innerHTML = "Play Again : )"
+          alert()
         }else if(this.inputMetrix[0][2] == this.inputMetrix[1][2] && this.inputMetrix[1][2] == this.inputMetrix[2][2]){
-          alert("win")
+
+          document.getElementById("resetGame-Button").innerHTML = "Play Again : )"
+          alert()
         }else if(this.inputMetrix[0][0] == this.inputMetrix[1][1] && this.inputMetrix[1][1] == this.inputMetrix[2][2]){
-          alert("win")
+
+          document.getElementById("resetGame-Button").innerHTML = "Play Again : )"
+          alert()
         }else if(this.inputMetrix[0][2] == this.inputMetrix[1][1] && this.inputMetrix[1][1] == this.inputMetrix[0][2]){
-          alert("win")
+
+          document.getElementById("resetGame-Button").innerHTML = "Play Again : )"
+          alert()
         }
       },
 
@@ -109,6 +125,9 @@ export default {
       resetGame(){
         this.gameReset =false
         this.gameStarted = false
+
+        location.reload(true)
+
       },
 
       clicked(e ,x,y){
