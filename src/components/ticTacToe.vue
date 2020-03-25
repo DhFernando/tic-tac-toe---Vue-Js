@@ -83,48 +83,46 @@ export default {
     methods:{
       winCheck(){
         if(this.inputMetrix[0][0] == this.inputMetrix[0][1] && this.inputMetrix[0][0] == this.inputMetrix[0][2]){
-
-
-          document.getElementById("resetGame-Button").innerHTML = "Play Again : )"
-          alert()
+          this.endGame()
         }else if(this.inputMetrix[1][0] == this.inputMetrix[1][1] && this.inputMetrix[1][0] == this.inputMetrix[1][2]){
 
-          document.getElementById("resetGame-Button").innerHTML = "Play Again : )"
-          alert()
+          this.endGame()
         }else if(this.inputMetrix[2][0] == this.inputMetrix[2][1] && this.inputMetrix[2][0] == this.inputMetrix[2][2]){
 
-          document.getElementById("resetGame-Button").innerHTML = "Play Again : )"
-          alert()
+          this.endGame()
         }else if(this.inputMetrix[0][0] == this.inputMetrix[1][0] && this.inputMetrix[1][0] == this.inputMetrix[2][0]){
 
-          document.getElementById("resetGame-Button").innerHTML = "Play Again : )"
-          alert()
+          this.endGame()
         }else if(this.inputMetrix[0][1] == this.inputMetrix[1][1] && this.inputMetrix[1][1] == this.inputMetrix[2][1]){
 
-          document.getElementById("resetGame-Button").innerHTML = "Play Again : )"
-          alert()
+          this.endGame()
         }else if(this.inputMetrix[0][2] == this.inputMetrix[1][2] && this.inputMetrix[1][2] == this.inputMetrix[2][2]){
 
-          document.getElementById("resetGame-Button").innerHTML = "Play Again : )"
-          alert()
+          this.endGame()
         }else if(this.inputMetrix[0][0] == this.inputMetrix[1][1] && this.inputMetrix[1][1] == this.inputMetrix[2][2]){
 
-          document.getElementById("resetGame-Button").innerHTML = "Play Again : )"
-          alert()
+          this.endGame()
         }else if(this.inputMetrix[0][2] == this.inputMetrix[1][1] && this.inputMetrix[1][1] == this.inputMetrix[0][2]){
 
-          document.getElementById("resetGame-Button").innerHTML = "Play Again : )"
-          alert()
+          this.endGame()
+        }
+      },
+      endGame(){
+        document.getElementById("resetGame-Button").innerHTML = "Play Again : )"
+        this.chance = null
+        if(this.count%2){
+          this.gameStatus = this.player.x_player + " WIN"
+        }else{
+          this.gameStatus = this.player.o_player + " WIN"
         }
       },
 
       startGame(){
-        if(this.player.x_player.length > 0 && this.player.o_player.length > 0 ){
-          this.errorMessage = null
+        if(this.player.x_player == null && this.player.o_player == null ){
+           this.errorMessage = "please enter player names first"
+        }else{
           this.gameStarted = true
           this.chance = this.player.x_player
-        }else{
-          this.errorMessage = "please enter player names first"
         }
         
 
