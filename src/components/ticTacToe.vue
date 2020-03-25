@@ -4,9 +4,10 @@
       <nav class="navbar navbar-light bg-light">
         <span class="navbar-brand mb-0 h1">TIC TAC TOE</span>
       </nav>
-      <div class="row p-5" id = "game">
+      <div class="row p-5" id = "game" >
         <div class="col-6 ml-5">
-          <div class="row">
+          <div class="" v-show="gameStarted == true">
+            <div class="row">
             <div class="col">
                 <button @click="clicked(1 , 0,0)" value = 1 id = 1> 1 </button>
                 <button @click="clicked(2 , 0,1)" id = 2>1</button>
@@ -29,6 +30,22 @@
                 <button @click="clicked(9 , 2,2)" id = 9>1</button>
             </div>
           </div>
+          </div>
+        </div>
+        <div class="col-3" v-show="gameStarted == false">
+            <div class="form-group">
+                <input type="text" v-model="player.x_player" placeholder="x-player name" class="form-control" :disabled="gameStarted" >
+              </div>
+            <div class="form-group">
+              <input type="text" class="form-control" v-model="player.o_player" placeholder="o-palyer name" :disabled="gameStarted" >
+            </div>
+            <button id="startGame-Button" @click="startGame() ">Start</button>
+            
+        </div>
+        <div class="col-5" v-show="gameStarted == true">
+            <h1>{{ gameStatus }}</h1>
+            <p>{{chance}}</p>
+            <button id="resetGame-Button"   @click="resetGame() ">Re-set</button>
         </div>
       </div>
     </div>
@@ -42,10 +59,14 @@ export default {
   data(){
       return{
         count : 0,
+        gameStarted:false,
+        gameReset:true,
+        chance : null,
         player:{
-          One : 'Dilshan',
-          Two : 'Gayathri'
+          x_player : null,
+          o_player : null
         },
+        gameStatus :"Match In Progress",
         inputMetrix:[
             [1,2,3],
             [4,5,6],
@@ -60,6 +81,7 @@ export default {
     methods:{
       winCheck(){
         if(this.inputMetrix[0][0] == this.inputMetrix[0][1] && this.inputMetrix[0][0] == this.inputMetrix[0][2]){
+
           alert("win")
         }else if(this.inputMetrix[1][0] == this.inputMetrix[1][1] && this.inputMetrix[1][0] == this.inputMetrix[1][2]){
           alert("win")
@@ -78,15 +100,34 @@ export default {
         }
       },
 
+      startGame(){
+        this.gameStarted = true
+        this.chance = this.player.x_player
+
+      },
+
+      resetGame(){
+        this.gameReset =false
+        this.gameStarted = false
+      },
+
       clicked(e ,x,y){
         this.count ++;
         document.getElementById(e).disabled = true
-        if(this.count % 2 ){
+        if (this.count % 2 ){
+
+          // chance changed to -> O player
+          this.chance = this.player.o_player
+
           document.getElementById(e).innerHTML = "X" 
           this.inputMetrix[x][y] = "X"
           this.winCheck()
           
         } else{
+
+          // chance changed to -> X player
+          this.chance = this.player.x_player
+
           document.getElementById(e).innerHTML = "O" 
           this.inputMetrix[x][y] = "O"
           this.winCheck()
@@ -107,6 +148,29 @@ export default {
     border: 3px solid rgba(148, 118, 64, 0.753);
     font-size: 1.5em;
     transition-duration: 0.4s;
+  }
+
+  #startGame-Button{
+    background-color: rgb(42, 10, 184); /* Green */
+    border: none;
+    color: white;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px; 
+    margin-right: 2px;
+  }
+
+  #resetGame-Button{
+    background-color: rgb(194, 11, 148); /* Green */
+    border: none;
+    color: white;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
   }
 
 button:hover {
